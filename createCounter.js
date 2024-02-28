@@ -13,5 +13,16 @@ function createCounter() {
   console.log(count, "나는 상태를 유지합니다.");
 
   // 리턴값으로 (함수가 아닌) 객체 리터럴 설정
-  return {};
+  return {
+    // count를 증가시키는 메서드 선언
+    increment: function () {
+      // 외부 환경(Lexical Environment)과 묶이는 코드, count 변수가 묶인 변수가 되는 순간
+      count += 1;
+      return count;
+    },
+    // 현재 count 값을 확일할 수 있는 메서드 선언
+    getCurrentCount: function () {
+      return count;
+    },
+  };
 }
