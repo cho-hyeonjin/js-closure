@@ -30,9 +30,16 @@ function createCounter() {
 
 // 클로저를 리턴하는 함수 createCounter 의 실행 결과가 할당된 상수 myCounter
 // 즉, myCounter 함수는 클로저 함수.
+// myCounter 객체와 myCounter2 객체는 모두 createCounter 함수로 찍어낸 인스턴스로, 서로의 상태에 영향을 주지 않고 각자 독립적으로 존재. ∴ 각자의 count 값 유지
 const myCounter = createCounter();
+const myCounter2 = createCounter();
 // myCounter 객체의 increment 메서드 (setter) 를 호출해서 count 값 증가
 myCounter.increment(); // count = 1
 myCounter.increment(); // count = 2
+myCounter2.increment(); // count = 1
+myCounter2.increment(); // count = 2
+myCounter2.increment(); // count = 3
+// 위 두 count 값은 평행 세계의 count 값처럼 각각 존재하는 독립된 값.
 // console.log()의 파라미터로 myCounter 객체의 getCurrentCount 메서드 (getter) 호출 결과를 전달하여 현재의 count 값 확인
 console.log(myCounter.getCurrentCount()); // 2
+console.log(myCounter2.getCurrentCount()); // 3
